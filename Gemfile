@@ -41,6 +41,9 @@ gem 'bootstrap', '~> 4.1.1'
 # Use bootstra devise views
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 
+# Use Rails Settings for Project Site Settings
+gem "rails-settings-cached", '~> 0.7'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -122,6 +122,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-settings-cached (0.7.1)
+      rails (>= 4.2.0)
     railties (5.0.7)
       actionpack (= 5.0.7)
       activesupport (= 5.0.7)
@@ -198,6 +200,7 @@ DEPENDENCIES
   phony_rails (~> 0.14)
   puma (~> 3.0)
   rails (~> 5.0.6)
+  rails-settings-cached (~> 0.7)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
