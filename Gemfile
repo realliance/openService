@@ -29,11 +29,17 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Devise for Website Users
 gem 'devise', '~> 4.4'
+# Use ValidEmail2 to check MX record on emails
+gem 'valid_email2', '~> 2.2'
+# Use phonyrails for normalizing and validating phone numbers
+gem 'phony_rails', '~> 0.14'
 # Use CanCanCan for permissions
 gem 'cancancan', '~> 2.0'
 
 # Use bootstrap for CSS components
 gem 'bootstrap', '~> 4.1.1'
+# Use bootstra devise views
+gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
