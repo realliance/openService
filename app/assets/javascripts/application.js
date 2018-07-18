@@ -16,3 +16,13 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+let reload = () => {
+  window.location.reload(true)
+}
+
+$(() => {
+  $(".logout_form").submit((event) => {
+    setTimeout(reload, 100)
+  })
+})
