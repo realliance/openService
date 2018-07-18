@@ -26,8 +26,24 @@ class User < ApplicationRecord
       "Member",
       "Officer",
       "Advisor",
-      "Admin"
+      "Superuser"
     ]
     rank_names[rank]
+  end
+
+  def member?
+    rank > 0
+  end 
+
+  def admin?
+    rank > 1
+  end
+
+  def advisor?
+    rank > 2
+  end
+
+  def superuser?
+    rank == 4
   end
 end

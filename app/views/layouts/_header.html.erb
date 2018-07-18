@@ -26,6 +26,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <h6 class="dropdown-header"><%= current_user.rank_name %></h6>
+              <% if current_user.admin? %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Website Settings", admin_settings_path, class: 'dropdown-item' %>
+              <% end %>
               <div class="dropdown-divider"></div>
               <%= button_to "Logout", destroy_user_session_path, method: :delete, remote: true, form_class: 'logout_form', class: 'dropdown-item' %>
             </div>
