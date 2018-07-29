@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def create
     if @event.save
-      Participant.create(event: @event, user: @event.manager)
+      Participant.create(event: @event, user: @event.user) unless @event.user.present?
       head :created, location: event_path(@event)
     else
       render json: {error: @event.errors}, status: :bad_request

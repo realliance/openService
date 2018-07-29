@@ -21,6 +21,8 @@ class ParticipantsController < ApplicationController
   private
 
   def create_params
-    params.require(:participant).permit(:user, :event)
+    parameters = params.require(:participant).permit(:user_id)
+    parameters[:event_id] = params[:event_id]
+    parameters
   end
 end
