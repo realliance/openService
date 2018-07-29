@@ -47,6 +47,10 @@ gem 'responders', '~> 2.4'
 # Use Rails Settings for Project Site Settings
 gem "rails-settings-cached", '~> 0.7'
 
+#Use wicked pdf for generating sign in sheet
+gem 'wicked_pdf', '~> 1.1'
+gem 'wkhtmltopdf-binary' , '~> 0.12'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -2,12 +2,19 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
-    if user.present?
-      can :manage, User, user_id: user.id
-      if user.admin?
-        can :manage, Setting
-      end
-    end
+    # Logged Out, everyone can do
+    can :read, Event
+    return unless user.present?
+    return unless user.member?
+    # If User is at least a Member
+    can :view_list, Participant
+    can [:create, :destroy], Participant, user_id: user.id
+    
+    return unless user.admin?
+    # If User is at least an Admin
+    can [:index, :create, :destroy], Participant
+    can :manage, Event
+    can :manage, Setting
+    can :manage, User
   end
 end

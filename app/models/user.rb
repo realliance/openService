@@ -16,6 +16,9 @@ class User < ApplicationRecord
   phony_normalize :phone_number, default_country_code: 'US'
   validates :phone_number, phony_plausible: true
 
+  has_many :participants
+  has_many :managed_events, foreign_key: 'user_id', class_name: "Event"
+
   def full_name
     first_name + ' ' + last_name
   end
