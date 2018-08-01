@@ -51,6 +51,8 @@ gem "rails-settings-cached", '~> 0.7'
 gem 'wicked_pdf', '~> 1.1'
 gem 'wkhtmltopdf-binary' , '~> 0.12'
 
+gem 'sentry-raven', '~> 2.7'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
