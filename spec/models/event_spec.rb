@@ -25,6 +25,14 @@ RSpec.describe Event, type: :model do
     expect(FactoryBot.build(:event, location: nil)).not_to be_valid
   end
 
+  it 'is invalid without a participant slot count' do
+    expect(FactoryBot.build(:event, participant_slots: nil)).not_to be_valid
+  end
+
+  it 'is invalid with a participant slot count of 0' do
+    expect(FactoryBot.build(:event, participant_slots: 0)).not_to be_valid
+  end
+
   it 'is valid if end_time is after start_time' do
     expect(FactoryBot.build(:event, end_time: DateTime.now)).to be_valid
   end

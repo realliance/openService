@@ -1,0 +1,59 @@
+<div class="container">
+  <h1><%= @event.title %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <p><%= @event.description %></p>
+      <hr>
+      <p>Location: <%= link_to @event.location, location_to_google_maps_search_link(@event.location) %></p>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Details</h5>
+          <% if @event.user.present? %>
+            <p>Manager: <%= @event.user.full_name %></p>
+          <% else %>
+            <p class="text-muted">This event current is not managed.</p>
+          <% end %>
+          <% if can? :create, Participant %>
+            <% if @event.full? %>
+              <button type="button" class="btn btn-sm btn-primary btn-block" disabled>Event is Full</button>
+            <% elsif !current_user_in_event(@event) %>
+              <%= button_to 'Sign Up For Event', {event_id: @event.id, participant: {user_id: current_user.id}, controller: :participants, action: :create}, remote: true, method: :post, class: 'btn btn-primary btn-block btn-sm', id: 'join_event' %>
+            <% else %>
+              <%= button_to 'Leave Event', {event_id: @event.id, id: @event.participants.find_by(user_id: current_user.id).id, controller: :participants, action: :destroy}, remote: true, method: :delete, class: 'btn btn-danger btn-block btn-sm', id: 'leave_event' %>
+            <% end %>
+          <% end %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Start: <%= format_datetime @event.start_time %></li>
+          <li class="list-group-item">End: <%= format_datetime @event.end_time %></li>
+          <li class="list-group-item"><%= get_slots_remaining @event %> Remaining Slots</li>
+        </ul>
+        <% if @event.participants.count > 0 %>
+          <% if can? :view_list, Participant %>
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#viewPart" aria-expanded="false" aria-controls="viewPart">
+                  View Participants
+                </button>
+              </h5>
+            </div>
+            <div id="viewPart" class="collapse" aria-labelledby="headingTwo">
+              <div class="card-body">
+                <ul>
+                  <%= render partial: 'participant', collection: @event.participants %>
+                </ul>
+              </div>
+            </div>
+          <% else %>
+            <div class="card-header" id="headingTwo">
+              Please <%= link_to "log in", new_user_session_path %> to view this event's participants.
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

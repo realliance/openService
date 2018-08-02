@@ -3,6 +3,7 @@
   <head>
     <title>OpenService</title>
     <%= csrf_meta_tags %>
+    <%= tag :meta, action: action_name, controller: controller_name %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

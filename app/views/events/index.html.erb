@@ -3,5 +3,19 @@
   <% if can? :manage, Event %>
     <%= link_to 'Create A New Event', new_event_path, class: 'btn btn-outline-primary btn-block' %>
   <% end %>
-  <%= render @events or 'No Events currently posted.' %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Slots Available</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Location</th>
+        <th></td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @events or '' %>
+    </tbody>
+</table>
 </div>

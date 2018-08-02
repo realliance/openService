@@ -9,7 +9,14 @@ class Event < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :location, presence: true
+  validates :participant_slots, presence: true
+  validates :participant_slots, numericality: { only_integer: true, greater_than: 0 }
+
   validate :end_must_be_after_start
+
+  def full?
+    participant_slots <= participants.count
+  end
 
   private
 

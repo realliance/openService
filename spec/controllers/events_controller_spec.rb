@@ -9,12 +9,12 @@ RSpec.describe EventsController, type: :controller do
 
   let (:valid_params) do
     event = FactoryBot.build(:event)
-    {title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, location: event.location}
+    {title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, participant_slots: event.participant_slots, location: event.location}
   end
 
   let (:valid_params_update) do
     event = FactoryBot.build(:event, title: FFaker::Lorem.phrase)
-    {title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, location: event.location}
+    {title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, participant_slots: event.participant_slots, location: event.location}
   end
 
   let (:invalid_params) do

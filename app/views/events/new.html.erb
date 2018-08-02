@@ -27,6 +27,11 @@
     </fieldset>
 
     <fieldset class="form-group">
+      <%= f.label :participant_slots, class: 'form-control-label' %>
+      <%= f.number_field :participant_slots, class: 'form-control' %>
+    </fieldset>
+
+    <fieldset class="form-group">
       <%= f.label :manager, class: 'form-control-label' %>
       <%= f.select :user_id, user_select_list, {}, { class: 'form-control' } %>
     </fieldset>

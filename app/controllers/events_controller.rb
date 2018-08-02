@@ -42,10 +42,10 @@ class EventsController < ApplicationController
   private
 
   def create_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :manager)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :user_id)
   end
 
   def update_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :manager)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :user_id)
   end
 end
