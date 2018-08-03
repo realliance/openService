@@ -1,24 +1,2 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# openService
+[![codebeat badge](https://codebeat.co/badges/e4499065-623e-4cb6-943f-732b1cd7ebd0)](https://codebeat.co/projects/github-com-realliance-openservice-develop)
