@@ -53,6 +53,11 @@ gem 'wkhtmltopdf-binary' , '~> 0.12'
 
 gem 'sentry-raven', '~> 2.7'
 
+group :test do
+  gem 'simplecov', '~> 0.16', require: false
+  gem 'codeclimate-test-reporter', '~> 1.0', require: false
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
