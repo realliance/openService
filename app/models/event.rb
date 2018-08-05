@@ -18,6 +18,10 @@ class Event < ApplicationRecord
     participant_slots <= participants.count
   end
 
+  def finished?
+    DateTime.now > DateTime.new(end_time.to_i)
+  end
+
   private
 
   def end_must_be_after_start

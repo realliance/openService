@@ -7,6 +7,7 @@ class ParticipantsController < ApplicationController
   
   def create
     return head :bad_request if @participant.event.full?
+    return head :bad_request if @participant.event.finished?
     if @participant.save
       head :created, location: event_path(@participant.event)
     else

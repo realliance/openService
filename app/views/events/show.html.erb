@@ -1,9 +1,14 @@
 <div class="container">
-  <h1><%= @event.title %></h1>
+  <h1>
+    <%= @event.title %>
+    <% if can? :manage, Event %>
+      <%= link_to 'Edit Event', edit_event_path(@event), class: 'btn btn-outline-primary btn-block' %>
+    <% end %>
+  </h1>
   <hr>
   <div class="row">
     <div class="col-md-8 col-sm-12">
-      <p><%= @event.description %></p>
+      <p><%= simple_format @event.description %></p>
       <hr>
       <p>Location: <%= link_to @event.location, location_to_google_maps_search_link(@event.location) %></p>
     </div>
