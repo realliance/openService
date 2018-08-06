@@ -2,7 +2,12 @@ class ParticipantsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    respond_with @participants
+    respond_with @participants do |format|
+      format.html
+      format.pdf do
+        render pdf: "sign_in_sheet"   # Excluding ".pdf" extension.
+      end
+    end
   end
   
   def create

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :events do
-    resources :participants, only: [:index, :create, :destroy]
+    resources :participants, only: [:create, :destroy]
+    get '/sign_in_sheet.pdf', to: 'participants#index', as: 'sign_in_sheet'
   end
 
 
