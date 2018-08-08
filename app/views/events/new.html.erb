@@ -33,7 +33,7 @@
 
     <fieldset class="form-group">
       <%= f.label :manager, class: 'form-control-label' %>
-      <%= f.select :user_id, user_select_list, {}, { class: 'form-control' } %>
+      <%= f.select :user_id, user_select_list, { include_blank: true }, { class: 'form-control' } %>
     </fieldset>
   
     <%= f.submit 'Create', class: 'btn btn-primary', data: { disable_with: 'Create' } %>

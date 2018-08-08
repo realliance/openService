@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: 'pages#root'
 
   namespace :admin do
-    resource :settings, only: [:show, :update]
+    get '/dashboard', to: 'settings#dashboard', as: 'dashboard'
+    get '/users', to: 'settings#users', as: 'users'
   end
 end

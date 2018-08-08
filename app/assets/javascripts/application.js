@@ -21,6 +21,10 @@ let reload = () => {
   window.location.reload(true)
 }
 
+let onSuccess = null;
+let onSend = null;
+let onError = null;
+
 $(() => {
   $(".logout_form").submit((event) => {
     setTimeout(reload, 100)

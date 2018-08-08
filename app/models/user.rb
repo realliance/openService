@@ -24,14 +24,7 @@ class User < ApplicationRecord
   end
 
   def rank_name
-    rank_names = [
-      "Guest",
-      "Member",
-      "Officer",
-      "Advisor",
-      "Superuser"
-    ]
-    rank_names[rank]
+    RANK_NAMES[rank]
   end
 
   def member?

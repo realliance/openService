@@ -1,0 +1,12 @@
+<tr>
+  <td><%= user.full_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.phone_number %></td>
+  <td class='user_rank'>
+    <%= form_for user, url: user_registration_path, method: :put, remote: true do |f| %>
+      <fieldset class="form-group">
+        <%= f.select :rank, RANK_NAMES.each_with_index.map {|name, index| [name,index]}, { selected: user.rank }, { class: 'form-control' } %>
+      </fieldset>
+    <% end %>
+  </td>
+</tr>
