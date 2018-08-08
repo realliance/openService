@@ -1,0 +1,11 @@
+<div class="card card-body">
+  <h6 class="card-title">
+    <%= upcoming_event.event.title %>
+  </h6>
+  <div class="card-subtitle mb-2 text-muted">
+    <%= get_date_string(upcoming_event.event.start_time) + ' ' + get_time_range(upcoming_event.event.start_time, upcoming_event.event.end_time) %> 
+  </div>
+  Location: <%= link_to upcoming_event.event.location, location_to_google_maps_search_link(upcoming_event.event.location) %>
+  <hr>
+  <%= link_to 'More Information', event_path(upcoming_event.event), class: 'btn btn-primary btn-block btn-sm' %>
+</div>
