@@ -5,6 +5,7 @@ class Ability
     # Logged Out, everyone can do
     can :read, Event
     return unless user.present?
+    can [:index, :show], Announcement
     return unless user.member?
     # If User is at least a Member
     can :view_list, Participant
@@ -16,5 +17,6 @@ class Ability
     can :manage, Event
     can :manage, Setting
     can :manage, User
+    can :manage, Announcement
   end
 end

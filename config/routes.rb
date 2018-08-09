@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get '/sign_in_sheet.pdf', to: 'participants#index', as: 'sign_in_sheet'
   end
 
+  resources :announcements, except: [:index]
+
 
   root to: 'pages#root'
 
