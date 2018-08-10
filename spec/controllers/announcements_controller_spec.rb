@@ -9,16 +9,16 @@ RSpec.describe AnnouncementsController, type: :controller do
 
   let (:valid_params) do
     announcement = FactoryBot.build(:announcement)
-    {title: announcement.title, description: announcement.description, user_id: announcement.user_id}
+    {title: announcement.title, description: announcement.description}
   end
 
   let (:valid_params_update) do
     announcement = FactoryBot.build(:announcement, title: FFaker::Lorem.phrase)
-    {title: announcement.title, description: announcement.description, user_id: announcement.user_id}
+    {title: announcement.title, description: announcement.description}
   end
 
   let (:invalid_params) do
-    {title: nil, description: nil, user_id: nil}
+    {title: nil, description: nil}
   end
 
   describe '#show' do

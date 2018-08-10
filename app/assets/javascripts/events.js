@@ -19,7 +19,6 @@ eventsSend = () => {
 eventsError = (event, data, status, xhr) => {
   $('input').attr('disabled', false);
   $('h1').before("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id=\"event_alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>An error has occured while trying to submit your information.</div>");
-  console.log(data.responseJSON)
   if (data.responseJSON !== undefined) {
     var errors = data.responseJSON.error;
     for (var form in errors) {

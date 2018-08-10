@@ -1,0 +1,7 @@
+<div class="media">
+  <div class="media-body">
+    <h4><%= announcement.title %></h4>
+    <b class="text-muted">posted by <%= announcement.user.full_name %></b>
+    <p><%= simple_format truncate(announcement.description, length: 350) { link_to 'Continue', announcement_path(announcement) } %></p>
+  </div>
+</div>

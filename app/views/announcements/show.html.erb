@@ -1,0 +1,11 @@
+<div class="container">
+  <h2><%= @announcement.title %></h2>
+  <h6 class="text-muted">posted by <%= @announcement.user.full_name %></h6>
+  <hr>
+  <p><%= simple_format @announcement.description %></p>
+  <% if can? :manage, Announcement %>
+    <%= link_to 'Edit Announcement', edit_announcement_path(@announcement), class: 'btn btn-sm btn-outline-primary btn-block' %>
+  <% end %>
+  <hr>
+  <p class="text-muted">Updated at <%= @announcement.updated_at.to_formatted_s(:long_ordinal) %></p>
+</div>

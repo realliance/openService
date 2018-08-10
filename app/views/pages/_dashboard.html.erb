@@ -1,12 +1,15 @@
 <div class="container">
   <h1>Welcome <%= current_user.first_name %></h1>
   <div class="row">
-    <div class="col-md-4 offset-md-8 col-sm-12">
+    <div class="col-md-4 order-1 col-sm-12">
       <h5>Upcoming Events</h5>
+      <hr>
       <%= render partial: 'upcoming_event', collection: upcoming_events(current_user) or 'No Upcoming Events.' %>
     </div>
     <div class="col-md-8 col-sm-12">
-
+      <h5>Recent Announcements</h5>
+      <hr>
+      <%= render partial: 'announcement', collection: Announcement.last(5).reverse  or 'No Announcements Posted.' %>
     </div>
   </div>
 </div>

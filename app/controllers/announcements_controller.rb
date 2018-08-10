@@ -37,10 +37,12 @@ class AnnouncementsController < ApplicationController
   private
 
   def create_params
-    params.require(:announcement).permit(:title, :description, :user_id)
+    create_p = params.require(:announcement).permit(:title, :description)
+    create_p[:user] = current_user
+    create_p
   end
 
   def update_params
-    params.require(:announcement).permit(:title, :description, :user_id)
+    params.require(:announcement).permit(:title, :description)
   end
 end
