@@ -3,9 +3,16 @@
   <td><%= user.email %></td>
   <td><%= user.phone_number %></td>
   <td class='user_rank'>
-    <%= form_for user, url: user_registration_path, method: :put, remote: true do |f| %>
+    <%= form_for user, url: admin_modify_user_path(user), remote: true do |f| %>
       <fieldset class="form-group">
         <%= f.select :rank, RANK_NAMES.each_with_index.map {|name, index| [name,index]}, { selected: user.rank }, { class: 'form-control' } %>
+      </fieldset>
+    <% end %>
+  </td>
+  <td class='user_deactivated'>
+    <%= form_for user, url: admin_modify_user_path(user), remote: true do |f| %>
+      <fieldset class="form-group">
+        <%= f.check_box :deactivated, { class: 'form-control' } %>
       </fieldset>
     <% end %>
   </td>

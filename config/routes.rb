@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'settings#dashboard', as: 'dashboard'
     get '/users', to: 'settings#users', as: 'users'
+    patch '/modify_user/:id', to: 'settings#modify_user', as: 'modify_user'
   end
 end

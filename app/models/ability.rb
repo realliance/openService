@@ -13,10 +13,6 @@ class Ability
     
     return unless user.admin?
     # If User is at least an Admin
-    can [:index, :create, :destroy], Participant
-    can :manage, Event
-    can :manage, Setting
-    can :manage, User
-    can :manage, Announcement
+    can :manage, :all
   end
 end

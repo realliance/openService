@@ -10,21 +10,19 @@ settingsError = (event, data, status, xhr) => {
   $("#setting_alert").append("<br><small>A network error occured, please refresh the page and try again.</small>");
 }
 
-settingsSuccess = (event, data, status, xhr) => {
-  setTimeout (reload, 100);
-}
-
 $(document).on('turbolinks:load', () => {
   if ( $('meta[controller=settings]').length == 0 ) {
     return;
   }
 
   onError = settingsError
-  onSuccess = settingsSuccess
+  onSuccess = null
   
-  $(".edit_user").on('ajax:success', onSuccess);
   $(".edit_user").on('ajax:error', onError);
   $('[name="user[rank]"]').change(function() {
     $(this).closest('form').submit();
   });
+  $('[name="user[deactivated]"]').click(function() {
+    $(this).closest('form').submit();
+  }); 
 });
