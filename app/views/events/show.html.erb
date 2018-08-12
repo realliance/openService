@@ -25,7 +25,9 @@
             <p class="text-muted">This event current is not managed.</p>
           <% end %>
           <% if can? :create, Participant %>
-            <% if @event.full? %>
+            <% if @event.finished? %>
+              <p class="text-success">This Event is Finished</p>
+            <% elsif @event.full? %>
               <button type="button" class="btn btn-sm btn-primary btn-block" disabled>Event is Full</button>
             <% elsif !current_user_in_event(@event) %>
               <%= button_to 'Sign Up For Event', {event_id: @event.id, participant: {user_id: current_user.id}, controller: :participants, action: :create}, remote: true, method: :post, class: 'btn btn-primary btn-block btn-sm', id: 'join_event' %>

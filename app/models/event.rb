@@ -19,7 +19,11 @@ class Event < ApplicationRecord
   end
 
   def finished?
-    DateTime.now > DateTime.new(end_time.to_i)
+    DateTime.now > end_time
+  end
+
+  def total_hours
+    ((end_time - start_time) * 24).to_i
   end
 
   private
