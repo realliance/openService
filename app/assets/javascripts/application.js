@@ -21,6 +21,32 @@ let reload = () => {
   window.location.reload(true)
 }
 
+let formSend = (tag) => {
+  $('fieldset').attr('class', 'form-group');
+  $('fieldset').children('div').remove();
+  $("#" + tag + "_alert").remove();
+  $('input').attr('disabled', true);
+}
+
+let formErrors = (tag, data) => {
+  $('input').attr('disabled', false);
+  $('h1').before("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" id=\"" + tag + "_alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>An error has occured while trying to submit your information.</div>");
+  if (data.responseJSON !== undefined) {
+    var errors = data.responseJSON.error;
+    for (var form in errors) {
+      var fieldSet = $("label[for=" + tag + "_" + form + "]").parent();
+      fieldSet.addClass('form-group has-danger');
+      for (var key in errors[form]) {
+        error = form.capitalizeFirstLetter().replace(/_/g, ' ') + ' ' + errors[form][key];
+        fieldSet.append("<div><small class=\"text-danger\">" + error + "</small></div>");
+      }
+    }  } else {
+    if (data.readyState == 0) {
+      $("#" + tag + "_alert").append("<br><small>A network error occured, please check your internet connection.</small>");
+    }
+  }
+}
+
 let onSuccess = null;
 let onSend = null;
 let onError = null;
