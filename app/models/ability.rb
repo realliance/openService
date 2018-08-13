@@ -11,7 +11,7 @@ class Ability
     can :view_list, Participant
     can [:create, :destroy], Participant, user_id: user.id
 
-    can :manage, Participant do |participant|
+    can [:index, :update, :sign_in_sheet], Participant do |participant|
       participant.event.user == user
     end
     

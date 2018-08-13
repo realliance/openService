@@ -2,6 +2,7 @@ class ParticipantsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @participants = Event.find_by(id: params[:event_id]).participants
     respond_with @participants
   end
 
@@ -24,6 +25,14 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def update
+    if @participant.update_attributes(update_params)
+      head :ok
+    else
+      render json: {error: @participant.errors}, status: :bad_request
+    end
+  end
+
   def destroy
     @participant.destroy
     head :ok
@@ -36,5 +45,9 @@ class ParticipantsController < ApplicationController
     parameters[:event_id] = params[:event_id]
     parameters[:hours] = Event.find_by(id: params[:event_id]).total_hours
     parameters
+  end
+
+  def update_params
+    params.require(:participant).permit(:hours)
   end
 end

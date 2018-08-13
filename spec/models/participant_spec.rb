@@ -20,4 +20,8 @@ RSpec.describe Participant, type: :model do
   it 'is invalid if gaining hours greater than what is possible in the event' do
     expect(FactoryBot.build(:participant, hours: 99)).not_to be_valid
   end
+
+  it 'is invalid if gained hours is negative' do
+    expect(FactoryBot.build(:participant, hours: -1)).not_to be_valid
+  end
 end

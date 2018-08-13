@@ -23,8 +23,30 @@ RSpec.describe ParticipantsController, type: :controller do
     { user_id: second_user.id, hours: 0 }
   end
 
+  let (:valid_params_update) do
+    { hours: 1 }
+  end
+
+  let (:invalid_params_update) do
+    { hours: -1 }
+  end
+
   let(:participant) do
-    FactoryBot.create(:participant)
+    FactoryBot.create(:participant, event_id: event.id)
+  end
+
+  describe '#index' do
+    before do
+      get :index, event_id: event.id
+    end
+
+    it 'assigns all participants to @participants' do
+      expect(assigns[:participants]).to eq([participant])
+    end
+
+    it 'returns HTTP status 200 (OK)' do
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   describe '#create' do
@@ -42,6 +64,30 @@ RSpec.describe ParticipantsController, type: :controller do
         post :create, params: {event_id: small_event.id, participant: valid_params}
         
         post :create, params: {event_id: small_event.id, participant: valid_params_second_user}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+  end
+
+  describe '#update' do
+    context 'with valid parameters' do
+      before do
+        put :update, params: {event_id: event.id, id: participant.id, participant: valid_params_update}
+      end
+
+      it 'updates the requested participant' do
+        participant.reload
+        expect(participant.updated_at).not_to eq(participant.created_at)
+      end
+
+      it 'returns HTTP status 200 (OK)' do
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'returns HTTP status 400 (Bad Request)' do
+        put :update, params: {event_id: event.id, id: participant.id, participant: invalid_params_update}
         expect(response).to have_http_status(:bad_request)
       end
     end

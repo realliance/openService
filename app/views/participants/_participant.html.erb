@@ -1,0 +1,16 @@
+<tr>
+  <td><%= participant.user.full_name %></td>
+  <td><%= number_to_phone participant.user.phone_number, area_code: true %></td>
+  <td>
+    <%= form_for participant, url: event_participant_path(params[:event_id], participant.id), remote: true do |f| %>
+      <fieldset class="form-group">
+        <%= f.number_field :hours, in: 0.0..participant.event.total_hours, class: 'form-control' %>
+      </fieldset>
+    <% end %>
+  </td>
+  <% if can? :manage, Participant %>
+    <td>
+      <%= button_to 'Remove from Event', {event_id: participant.event.id, id: participant.id, controller: :participants, action: :destroy}, remote: true, method: :delete, form: { id: 'leave_event' }, class: 'btn btn-danger btn-block btn-sm', data: { confirm: 'Are you sure?' } %>
+    </td>
+  <% end %>
+</tr>
