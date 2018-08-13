@@ -29,6 +29,7 @@ class ParticipantsController < ApplicationController
   def create_params
     parameters = params.require(:participant).permit(:user_id)
     parameters[:event_id] = params[:event_id]
+    parameters[:hours] = Event.find_by(id: params[:event_id]).total_hours
     parameters
   end
 end

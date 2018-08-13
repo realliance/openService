@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20180812230139) do
 
   create_table "announcements", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
+    t.text     "description"
+    t.string   "title"
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
     t.index ["user_id"], name: "index_announcements_on_user_id"
   end
 
@@ -26,20 +26,20 @@ ActiveRecord::Schema.define(version: 20180812230139) do
     t.text     "description"
     t.datetime "end_time"
     t.string   "location"
+    t.integer  "participant_slots"
     t.datetime "start_time"
     t.string   "title"
     t.datetime "updated_at",        null: false
     t.integer  "user_id"
-    t.integer  "participant_slots"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "participants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer  "event_id"
+    t.integer  "hours"
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.integer  "hours"
     t.index ["event_id"], name: "index_participants_on_event_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end

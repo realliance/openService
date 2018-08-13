@@ -16,11 +16,11 @@ RSpec.describe ParticipantsController, type: :controller do
   end
 
   let (:valid_params) do
-    { user_id: user.id }
+    { user_id: user.id, hours: 0 }
   end
 
   let (:valid_params_second_user) do
-    { user_id: second_user.id }
+    { user_id: second_user.id, hours: 0 }
   end
 
   let(:participant) do

@@ -4,22 +4,21 @@ class Participant < ApplicationRecord
 
   validates :user, presence: true
   validates :event, presence: true
+
   validates :hours, presence: true
 
-  validate :hours_valid, if event.exists? && hours.exists?
+  validate :hours_valid
 
 
   def hours_gained
-    if event.finished?
-      return hours
-    else
-      return 0
-    end
+    return 0 unless event.finished?
+    return hours
   end
 
   private
 
   def hours_valid
-    hours <= event.total_hours
+    return false unless event.present? && hours.present?
+    errors.add(:hours, "must be less than the total event time") unless hours <= event.total_hours
   end
 end

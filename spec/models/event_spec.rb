@@ -34,7 +34,7 @@ RSpec.describe Event, type: :model do
   end
 
   it 'is valid if end_time is after start_time' do
-    expect(FactoryBot.build(:event, end_time: DateTime.now)).to be_valid
+    expect(FactoryBot.build(:event, end_time: DateTime.new(2112, 03, 05))).to be_valid
   end
 
   it 'is invalid if end_time is before start_time' do
