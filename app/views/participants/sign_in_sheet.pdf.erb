@@ -13,4 +13,6 @@
     <%= render @participants or '' %>
   </tbody>
 </table>
-<i>Participants as of <%=@participants.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%-m/%-d/%y %l:%M:%S%p') %></i>
+<% if @participants.last.present? %>
+  <i>Participants as of <%=@participants.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%-m/%-d/%y %l:%M:%S%p') %></i>
+<% end %>

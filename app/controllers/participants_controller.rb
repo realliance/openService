@@ -2,6 +2,11 @@ class ParticipantsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    respond_with @participants
+  end
+
+  def sign_in_sheet
+    @participants = Event.find_by(id: params[:event_id]).participants
     respond_with @participants do |format|
       format.html
       format.pdf do

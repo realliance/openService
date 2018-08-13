@@ -10,6 +10,10 @@ class Ability
     # If User is at least a Member
     can :view_list, Participant
     can [:create, :destroy], Participant, user_id: user.id
+
+    can :manage, Participant do |participant|
+      participant.event.user == user
+    end
     
     return unless user.admin?
     # If User is at least an Admin
