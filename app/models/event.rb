@@ -14,6 +14,7 @@ class Event < ApplicationRecord
 
   validate :end_must_be_after_start
 
+
   def full?
     participant_slots <= participants.count
   end

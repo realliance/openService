@@ -6,6 +6,7 @@ class Ability
     can :read, Event
     return unless user.present?
     can [:index, :show], Announcement
+    can :overview, PagesController
     return unless user.member?
     # If User is at least a Member
     can :view_list, Participant

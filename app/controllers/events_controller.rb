@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    params[:finished] = params[:finished] == "true"
+    @events = get_events_when_finished_is params[:finished]
     respond_with @events
   end
 
@@ -47,5 +49,13 @@ class EventsController < ApplicationController
 
   def update_params
     params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :user_id)
+  end
+
+  def get_events_when_finished_is(finished)
+    events = Array.new
+    Event.all.each do |event|
+      events.push(event) if event.finished? == finished
+    end
+    events
   end
 end

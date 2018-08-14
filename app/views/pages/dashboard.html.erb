@@ -2,6 +2,13 @@
   <h1>Welcome <%= current_user.first_name %></h1>
   <div class="row">
     <div class="col-md-4 order-1 col-sm-12">
+      <h5>Your Overview</h5>
+      <hr>
+      <p class="lead">
+        Total Hours: <%= current_user.total_hours %>
+      </p>
+      <%= link_to 'View Hour Overview', user_overview_path, class: 'btn btn-block btn-small btn-primary' %>
+      <hr>
       <h5>Upcoming Events</h5>
       <hr>
       <%= render partial: 'upcoming_event', collection: upcoming_events(current_user) or 'No Upcoming Events.' %>

@@ -31,6 +31,9 @@ $(document).on('turbolinks:load', () => {
     return;
   }
 
+  $('#event_start_time').datetimepicker();
+  $('#event_end_time').datetimepicker();
+
   onSend = eventsSend
   onError = eventsError
   onSuccess = eventsSuccess

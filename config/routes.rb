@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 
   root to: 'pages#root'
+  get '/user/overview', to: 'pages#overview'
 
   namespace :admin do
     get '/dashboard', to: 'settings#dashboard', as: 'dashboard'

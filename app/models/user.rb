@@ -30,7 +30,7 @@ class User < ApplicationRecord
   def total_hours
     hours = 0
     participants.each do |participant|
-      hours += participant.hours
+      hours += participant.hours_gained
     end
     hours
   end

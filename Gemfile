@@ -53,6 +53,14 @@ gem 'wkhtmltopdf-binary' , '~> 0.12'
 
 gem 'sentry-raven', '~> 2.7'
 
+# Use jquery datetime picker
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker', '~> 2.4'
+end
+
+# Use fontawesome for icons
+gem 'font-awesome-rails', '~> 4.7'
+
 group :test do
   gem 'simplecov', '~> 0.16', require: false
   gem 'codeclimate-test-reporter', '~> 1.0', require: false

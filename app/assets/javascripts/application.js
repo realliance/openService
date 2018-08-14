@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
+//= require datetimepicker
 //= require_tree .
 
 let reload = () => {
@@ -51,8 +52,13 @@ let onSuccess = null;
 let onSend = null;
 let onError = null;
 
-$(() => {
+ready = function() {
   $(".logout_form").submit((event) => {
     setTimeout(reload, 100)
   })
-})
+
+  $('[data-toggle="tooltip"]').tooltip()
+}
+
+$(document).ready(ready)
+$(document).on('turbolinks:load', ready)
