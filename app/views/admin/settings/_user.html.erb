@@ -2,6 +2,7 @@
   <td><%= user.full_name %></td>
   <td><%= user.email %></td>
   <td><%= user.phone_number %></td>
+  <td><%= user.total_hours %></td>
   <td class='user_rank'>
     <%= form_for user, url: admin_modify_user_path(user), remote: true do |f| %>
       <fieldset class="form-group">

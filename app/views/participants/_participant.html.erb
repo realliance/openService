@@ -4,7 +4,7 @@
   <td>
     <%= form_for participant, url: event_participant_path(params[:event_id], participant.id), remote: true do |f| %>
       <fieldset class="form-group">
-        <%= f.number_field :hours, in: 0.0..participant.event.total_hours, class: 'form-control' %>
+        <%= f.number_field :hours, in: 0.0..participant.event.total_hours, step: 0.5, class: 'form-control' %>
       </fieldset>
     <% end %>
   </td>

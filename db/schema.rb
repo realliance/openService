@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180812230139) do
   create_table "participants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer  "event_id"
-    t.integer  "hours"
+    t.decimal  "hours"
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["event_id"], name: "index_participants_on_event_id"

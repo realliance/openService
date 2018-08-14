@@ -23,7 +23,7 @@ class Event < ApplicationRecord
   end
 
   def total_hours
-    ((end_time - start_time) / 3600).to_i
+    ((end_time - start_time) / 3600).to_f
   end
 
   private

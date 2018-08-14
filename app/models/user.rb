@@ -27,6 +27,14 @@ class User < ApplicationRecord
     RANK_NAMES[rank]
   end
 
+  def total_hours
+    hours = 0
+    participants.each do |participant|
+      hours += participant.hours
+    end
+    hours
+  end
+
   def member?
     rank > 0
   end 
