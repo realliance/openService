@@ -20,6 +20,23 @@ class Admin::SettingsController < ApplicationController
     end
   end
 
+  def settings
+    @settings = Setting.get_all
+    respond_with @settings
+  end
+
+  def update_settings
+    return head :bad_request if params[:club].nil? || params[:navbarStyle].nil? || params[:navbarColor].nil?
+    
+    ActiveRecord::Base.transaction do
+      Setting['club'] = params[:club]
+      Setting['navbarStyle'] = params[:navbarStyle]
+      Setting['navbarColor'] = params[:navbarColor]
+    end
+
+    head :ok
+  end
+
   private
 
   def modify_user_params

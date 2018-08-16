@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
-  alias_attribute :manager, :user
+  
+  belongs_to :manager, class_name: 'User', foreign_key: 'manager_id'
 
-  belongs_to :user
   has_many :participants
 
   validates :title, presence: true
@@ -14,6 +14,8 @@ class Event < ApplicationRecord
 
   validate :end_must_be_after_start
 
+  scope :finished_events, -> { where("end_time < ?", DateTime.now) }
+  scope :unfinished_events, -> { where("end_time > ?", DateTime.now) }
 
   def full?
     participant_slots <= participants.count

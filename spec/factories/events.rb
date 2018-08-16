@@ -6,6 +6,6 @@ FactoryBot.define do
     end_time DateTime.new(2075, 3, 5, 15, 15)
     location FFaker::Address.street_address
     participant_slots FFaker::Random.rand(1..35)
-    user_id { FactoryBot.create(:user, rank: 2).id }
+    manager_id { FactoryBot.create(:user, rank: 2).id }
   end
 end

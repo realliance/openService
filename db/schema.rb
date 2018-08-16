@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20180812230139) do
     t.text     "description"
     t.datetime "end_time"
     t.string   "location"
+    t.integer  "manager_id"
     t.integer  "participant_slots"
     t.datetime "start_time"
     t.string   "title"
     t.datetime "updated_at",        null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["manager_id"], name: "index_events_on_manager_id"
   end
 
   create_table "participants", force: :cascade do |t|

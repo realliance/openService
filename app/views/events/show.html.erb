@@ -21,8 +21,8 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Details</h5>
-          <% if @event.user.present? %>
-            <p>Manager: <%= @event.user.full_name %></p>
+          <% if @event.manager.present? %>
+            <p>Manager: <%= @event.manager.full_name %></p>
           <% else %>
             <p class="text-muted">This event current is not managed.</p>
           <% end %>

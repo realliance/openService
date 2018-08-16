@@ -17,5 +17,8 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'settings#dashboard', as: 'dashboard'
     get '/users', to: 'settings#users', as: 'users'
     patch '/modify_user/:id', to: 'settings#modify_user', as: 'modify_user'
+
+    get '/settings', to: 'settings#settings', as: 'settings'
+    patch '/update_settings', to: 'settings#update_settings', as: 'update_settings'
   end
 end

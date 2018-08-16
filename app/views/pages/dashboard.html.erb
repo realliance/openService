@@ -16,7 +16,7 @@
     <div class="col-md-8 col-sm-12">
       <h5>Recent Announcements</h5>
       <hr>
-      <%= render partial: 'announcement', collection: Announcement.last(5).reverse  or 'No Announcements Posted.' %>
+      <%= render partial: 'announcement', collection: Announcement.last(5).reverse, cached: true  or 'No Announcements Posted.' %>
     </div>
   </div>
 </div>

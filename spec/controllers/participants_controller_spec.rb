@@ -37,7 +37,7 @@ RSpec.describe ParticipantsController, type: :controller do
 
   describe '#index' do
     before do
-      get :index, event_id: event.id
+      get :index, params: { event_id: event.id }
     end
 
     it 'assigns all participants to @participants' do

@@ -2,8 +2,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    params[:finished] = params[:finished] == "true"
-    @events = get_events_when_finished_is params[:finished]
+    @events = params[:finished].present? ? Event.finished_events : Event.unfinished_events
     respond_with @events
   end
 
@@ -21,7 +20,6 @@ class EventsController < ApplicationController
 
   def create
     if @event.save
-      Participant.create(event: @event, user: @event.user) unless @event.user.present?
       head :created, location: event_path(@event)
     else
       render json: {error: @event.errors}, status: :bad_request
@@ -44,18 +42,10 @@ class EventsController < ApplicationController
   private
 
   def create_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :user_id)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :manager_id)
   end
 
   def update_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :user_id)
-  end
-
-  def get_events_when_finished_is(finished)
-    events = Array.new
-    Event.all.each do |event|
-      events.push(event) if event.finished? == finished
-    end
-    events
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :participant_slots, :manager_id)
   end
 end

@@ -16,7 +16,9 @@ class User < ApplicationRecord
   validates :phone_number, phony_plausible: true
 
   has_many :participants
-  has_many :events
+
+  has_many :managed_events, class_name: 'Event', foreign_key: 'manager_id', inverse_of: 'manager'
+
   has_many :announcements
 
   def full_name

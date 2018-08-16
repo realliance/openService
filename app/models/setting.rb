@@ -1,5 +1,7 @@
 # RailsSettings Model
 class Setting < RailsSettings::Base
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
   source Rails.root.join("config/app.yml")
 
   # When config/app.yml has changed, you need change this prefix to v2, v3 ... to expires caches

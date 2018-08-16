@@ -1,6 +1,6 @@
 module EventsHelper
   def user_select_list
-    User.order('rank DESC').map{|u| [u.full_name + ' - ' + u.rank_name, u.id] }
+    User.order(rank: :desc, first_name: :desc).map{|u| [u.full_name + ' - ' + u.rank_name, u.id] }
   end
 
   def format_datetime(datetime)
