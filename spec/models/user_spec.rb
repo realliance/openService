@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'when logged in' do
-    context 'and unverified' do
+    context 'when unverified' do
       let(:user) do
         FactoryBot.create(:user, rank: 0)
       end
@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'as a member' do
+    context 'when a member' do
       let(:user) do
         FactoryBot.create(:user, rank: 1)
       end
@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'as an admin' do
+    context 'when an admin' do
       let(:user) do
         FactoryBot.create(:user, rank: 2)
       end

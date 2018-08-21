@@ -11,23 +11,23 @@ RSpec.describe ParticipantsController, type: :controller do
     FactoryBot.create(:event, participant_slots: 1)
   end
 
-  let (:second_user) do
+  let(:second_user) do
     FactoryBot.create(:user)
   end
 
-  let (:valid_params) do
+  let(:valid_params) do
     { user_id: user.id, hours: 0 }
   end
 
-  let (:valid_params_second_user) do
+  let(:valid_params_second_user) do
     { user_id: second_user.id, hours: 0 }
   end
 
-  let (:valid_params_update) do
+  let(:valid_params_update) do
     { hours: 1 }
   end
 
-  let (:invalid_params_update) do
+  let(:invalid_params_update) do
     { hours: -1 }
   end
 
@@ -52,18 +52,17 @@ RSpec.describe ParticipantsController, type: :controller do
   describe '#create' do
     context 'with valid parameters' do
       it 'creates a new participant' do
-        expect { post :create, params: {event_id: event.id, participant: valid_params} }.to change(Participant, :count).by(1)
+        expect { post :create, params: { event_id: event.id, participant: valid_params } }.to change(Participant, :count).by(1)
       end
 
       it 'returns HTTP status 201 (Created)' do
-        post :create, params: {event_id: event.id, participant: valid_params}
+        post :create, params: { event_id: event.id, participant: valid_params }
         expect(response).to have_http_status(:created)
       end
 
       it 'returns HTTP Status 403 (Bad Request) if the event is full' do
-        post :create, params: {event_id: small_event.id, participant: valid_params}
-        
-        post :create, params: {event_id: small_event.id, participant: valid_params_second_user}
+        post :create, params: { event_id: small_event.id, participant: valid_params }
+        post :create, params: { event_id: small_event.id, participant: valid_params_second_user }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -72,7 +71,7 @@ RSpec.describe ParticipantsController, type: :controller do
   describe '#update' do
     context 'with valid parameters' do
       before do
-        put :update, params: {event_id: event.id, id: participant.id, participant: valid_params_update}
+        put :update, params: { event_id: event.id, id: participant.id, participant: valid_params_update }
       end
 
       it 'updates the requested participant' do
@@ -87,7 +86,7 @@ RSpec.describe ParticipantsController, type: :controller do
 
     context 'with invalid parameters' do
       it 'returns HTTP status 400 (Bad Request)' do
-        put :update, params: {event_id: event.id, id: participant.id, participant: invalid_params_update}
+        put :update, params: { event_id: event.id, id: participant.id, participant: invalid_params_update }
         expect(response).to have_http_status(:bad_request)
       end
     end

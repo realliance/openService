@@ -1,0 +1,31 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - bin/*
+
+Rails:
+  Enabled: true
+
+Metrics:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+FactoryBot/DynamicAttributeDefinedStatically:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
+
+Style/NumericLiteralPrefix:
+  Enabled: false

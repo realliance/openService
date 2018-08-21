@@ -7,18 +7,18 @@ RSpec.describe EventsController, type: :controller do
     FactoryBot.create(:event)
   end
 
-  let (:valid_params) do
+  let(:valid_params) do
     event = FactoryBot.build(:event)
-    {title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, participant_slots: event.participant_slots, location: event.location}
+    { title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, participant_slots: event.participant_slots, location: event.location }
   end
 
-  let (:valid_params_update) do
+  let(:valid_params_update) do
     event = FactoryBot.build(:event, title: FFaker::Lorem.phrase)
-    {title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, participant_slots: event.participant_slots, location: event.location}
+    { title: event.title, description: event.description, start_time: event.start_time, end_time: event.end_time, participant_slots: event.participant_slots, location: event.location }
   end
 
-  let (:invalid_params) do
-    {title: nil, description: nil, start_time: nil, end_time: nil, location: nil}
+  let(:invalid_params) do
+    { title: nil, description: nil, start_time: nil, end_time: nil, location: nil }
   end
 
   describe '#index' do
@@ -37,7 +37,7 @@ RSpec.describe EventsController, type: :controller do
 
   describe '#show' do
     before do
-      get :show, params: {id: event.id}
+      get :show, params: { id: event.id }
     end
 
     it 'assigns event to @event' do
@@ -65,7 +65,7 @@ RSpec.describe EventsController, type: :controller do
 
   describe '#edit' do
     before do
-      get :edit, params: {id: event.id}
+      get :edit, params: { id: event.id }
     end
 
     it 'assigns event to @event' do
@@ -80,18 +80,18 @@ RSpec.describe EventsController, type: :controller do
   describe '#create' do
     context 'with valid parameters' do
       it 'creates a new event' do
-        expect { post :create, params: {event: valid_params} }.to change(Event, :count).by(1)
+        expect { post :create, params: { event: valid_params } }.to change(Event, :count).by(1)
       end
 
       it 'returns HTTP status 201 (Created)' do
-        post :create, params: {event: valid_params}
+        post :create, params: { event: valid_params }
         expect(response).to have_http_status(:created)
       end
     end
 
     context 'with invalid parameters' do
       it 'returns HTTP status 400 (Bad Request)' do
-        post :create, params: {event: invalid_params}
+        post :create, params: { event: invalid_params }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -100,7 +100,7 @@ RSpec.describe EventsController, type: :controller do
   describe '#update' do
     context 'with valid parameters' do
       before do
-        put :update, params: {id: event.id, event: valid_params_update}
+        put :update, params: { id: event.id, event: valid_params_update }
       end
 
       it 'updates the requested event' do
@@ -115,7 +115,7 @@ RSpec.describe EventsController, type: :controller do
 
     context 'with invalid parameters' do
       it 'returns HTTP status 400 (Bad Request)' do
-        put :update, params: {id: event.id, event: invalid_params}
+        put :update, params: { id: event.id, event: invalid_params }
         expect(response).to have_http_status(:bad_request)
       end
     end

@@ -7,23 +7,23 @@ RSpec.describe AnnouncementsController, type: :controller do
     FactoryBot.create(:announcement)
   end
 
-  let (:valid_params) do
+  let(:valid_params) do
     announcement = FactoryBot.build(:announcement)
-    {title: announcement.title, description: announcement.description}
+    { title: announcement.title, description: announcement.description }
   end
 
-  let (:valid_params_update) do
+  let(:valid_params_update) do
     announcement = FactoryBot.build(:announcement, title: FFaker::Lorem.phrase)
-    {title: announcement.title, description: announcement.description}
+    { title: announcement.title, description: announcement.description }
   end
 
-  let (:invalid_params) do
-    {title: nil, description: nil}
+  let(:invalid_params) do
+    { title: nil, description: nil }
   end
 
   describe '#show' do
     before do
-      get :show, params: {id: announcement.id}
+      get :show, params: { id: announcement.id }
     end
 
     it 'assigns announcement to @announcement' do
@@ -51,7 +51,7 @@ RSpec.describe AnnouncementsController, type: :controller do
 
   describe '#edit' do
     before do
-      get :edit, params: {id: announcement.id}
+      get :edit, params: { id: announcement.id }
     end
 
     it 'assigns announcement to @announcement' do
@@ -66,18 +66,18 @@ RSpec.describe AnnouncementsController, type: :controller do
   describe '#create' do
     context 'with valid parameters' do
       it 'creates a new announcement' do
-        expect { post :create, params: {announcement: valid_params} }.to change(Announcement, :count).by(1)
+        expect { post :create, params: { announcement: valid_params } }.to change(Announcement, :count).by(1)
       end
 
       it 'returns HTTP status 201 (Created)' do
-        post :create, params: {announcement: valid_params}
+        post :create, params: { announcement: valid_params }
         expect(response).to have_http_status(:created)
       end
     end
 
     context 'with invalid parameters' do
       it 'returns HTTP status 400 (Bad Request)' do
-        post :create, params: {announcement: invalid_params}
+        post :create, params: { announcement: invalid_params }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -86,7 +86,7 @@ RSpec.describe AnnouncementsController, type: :controller do
   describe '#update' do
     context 'with valid parameters' do
       before do
-        put :update, params: {id: announcement.id, announcement: valid_params_update}
+        put :update, params: { id: announcement.id, announcement: valid_params_update }
       end
 
       it 'updates the requested announcement' do
@@ -101,7 +101,7 @@ RSpec.describe AnnouncementsController, type: :controller do
 
     context 'with invalid parameters' do
       it 'returns HTTP status 400 (Bad Request)' do
-        put :update, params: {id: announcement.id, announcement: invalid_params}
+        put :update, params: { id: announcement.id, announcement: invalid_params }
         expect(response).to have_http_status(:bad_request)
       end
     end

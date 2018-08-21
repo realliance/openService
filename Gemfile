@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
@@ -45,11 +44,11 @@ gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'boots
 gem 'responders', '~> 2.4'
 
 # Use Rails Settings for Project Site Settings
-gem "rails-settings-cached", '~> 0.7'
+gem 'rails-settings-cached', '~> 0.7'
 
-#Use wicked pdf for generating sign in sheet
+# Use wicked pdf for generating sign in sheet
 gem 'wicked_pdf', '~> 1.1'
-gem 'wkhtmltopdf-binary' , '~> 0.12'
+gem 'wkhtmltopdf-binary', '~> 0.12'
 
 gem 'sentry-raven', '~> 2.7'
 
@@ -62,8 +61,8 @@ end
 gem 'font-awesome-rails', '~> 4.7'
 
 group :test do
-  gem 'simplecov', '~> 0.16', require: false
   gem 'codeclimate-test-reporter', '~> 1.0', require: false
+  gem 'simplecov', '~> 0.16', require: false
 end
 
 group :development, :test do
@@ -85,9 +84,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -99,10 +98,10 @@ group :development do
   # Use rubocop to check style
   gem 'rubocop', '~> 0.58', require: false
   # Check style for tests
-  gem 'rubocop-rspec', require: false 
+  gem 'rubocop-rspec', require: false
   # Lock down the formatting of schema.rb
   gem 'fix-db-schema-conflicts', '~> 3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
