@@ -3,21 +3,23 @@
   <% if can? :manage, Event %>
     <%= link_to 'Create A New Event', new_event_path, class: 'btn btn-outline-primary btn-block' %>
   <% end %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Event Name</th>
-        <th>Slots Available</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Location</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: 'event', collection: @events, cached: true or '' %>
-    </tbody>
-  </table>
+  <div style="overflow-x: auto;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Slots Available</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'event', collection: @events, cached: true or '' %>
+      </tbody>
+    </table>
+  </div>
   <%= link_to 'View Finished Event', events_path(finished: true), class: 'btn btn-secondary btn-block' unless params[:finished] %>
   <%= link_to 'View Current Event', events_path, class: 'btn btn-secondary btn-block' if params[:finished] %>
 </div>
