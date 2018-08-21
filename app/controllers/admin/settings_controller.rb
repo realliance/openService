@@ -6,7 +6,7 @@ class Admin::SettingsController < ApplicationController
   end
 
   def users
-    @users = User.all
+    @users = User.all.order('rank DESC')
     respond_with @users
   end
 

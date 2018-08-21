@@ -37,9 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      <% cache @participations do%>
-        <%= render partial: 'participation', collection: @participations %>
-      <% end %>
+      <%= render partial: 'participation', collection: @participations, cached: true or '' %>
     </tbody>
   </table>
 </div>

@@ -1,4 +1,31 @@
 <div class="container">
   <%= render 'menu' %>
+  <h1>Dashboard</h1>
+  <div class="card-deck">
+    <div class="card text-center">
+      <div class="card-header">
+        Total Registered Users
+      </div>
+      <div class="card-body">
+        <h1 class="display-2"><%= User.count %></h1>
+      </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-header">
+        Total Created Events
+      </div>
+      <div class="card-body">
+        <h1 class="display-2"><%= Event.count %></h1>
+      </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-header">
+        Total Event Participants
+      </div>
+      <div class="card-body">
+        <h1 class="display-2"><%= Participant.count %></h1>
+      </div>
+    </div>
+  </div>
 </div>
 
