@@ -5,6 +5,8 @@ set -e -x
 
 gem install rails
 
+ls
+
 gem install bundler
 
 bundle install
