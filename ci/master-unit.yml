@@ -8,4 +8,4 @@ image_resource:
     tag: '2-10'
 
 run:
-  path: openService-develop/ci/scripts/unit
+  path: openService-master/ci/scripts/unit

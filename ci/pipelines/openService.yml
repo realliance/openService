@@ -5,17 +5,27 @@ resources:
   source:
     uri: https://github.com/realliance/openService
     branch: develop
+- name: openService-master
+  type: git
+  source:
+    uri: https://github.com/realliance/openService
+    branch: master    
 
 jobs:
-- name: unit
+- name: develop-test
   plan:
   - get: openService-develop
     trigger: true
   - task: unit
     file: openService-develop/ci/unit.yml
-- name: lint
-  plan:
-  - get: openService-develop
-    trigger: true
   - task: lint
     file: openService-develop/ci/lint.yml
+- name: master-build
+  plan:
+  - get: openService-master
+    trigger: true
+  - task: unit
+    file: openService-master/ci/master-unit.yml
+    on_success:
+      task: publish
+      file: openService-master/ci/publish.yml
