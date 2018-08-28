@@ -29,3 +29,18 @@ Rails/TimeZone:
 
 Style/NumericLiteralPrefix:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false

@@ -11,25 +11,25 @@ class ParticipantsController < ApplicationController
     respond_with @participants do |format|
       format.html
       format.pdf do
-        render pdf: "sign_in_sheet"   # Excluding ".pdf" extension.
+        render pdf: 'sign_in_sheet'
       end
     end
   end
-  
+
   def create
     return head :bad_request if @participant.event.full? || @participant.event.finished?
     if @participant.save
       head :created, location: event_path(@participant.event)
     else
-      render json: {error: @participant.errors}, status: :bad_request
+      render json: { error: @participant.errors }, status: :bad_request
     end
   end
 
   def update
-    if @participant.update_attributes(update_params)
+    if @participant.update(update_params)
       head :ok
     else
-      render json: {error: @participant.errors}, status: :bad_request
+      render json: { error: @participant.errors }, status: :bad_request
     end
   end
 

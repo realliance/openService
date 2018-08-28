@@ -22,15 +22,15 @@ class EventsController < ApplicationController
     if @event.save
       head :created, location: event_path(@event)
     else
-      render json: {error: @event.errors}, status: :bad_request
+      render json: { error: @event.errors }, status: :bad_request
     end
   end
 
   def update
-    if @event.update_attributes(update_params)
+    if @event.update(update_params)
       head :ok
     else
-      render json: {error: @event.errors}, status: :bad_request
+      render json: { error: @event.errors }, status: :bad_request
     end
   end
 

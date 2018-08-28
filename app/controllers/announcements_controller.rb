@@ -17,15 +17,15 @@ class AnnouncementsController < ApplicationController
     if @announcement.save
       head :created, location: announcement_path(@announcement)
     else
-      render json: {error: @announcement.errors}, status: :bad_request
+      render json: { error: @announcement.errors }, status: :bad_request
     end
   end
 
   def update
-    if @announcement.update_attributes(update_params)
+    if @announcement.update(update_params)
       head :ok
     else
-      render json: {error: @announcement.errors}, status: :bad_request
+      render json: { error: @announcement.errors }, status: :bad_request
     end
   end
 

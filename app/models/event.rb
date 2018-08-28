@@ -1,6 +1,5 @@
 class Event < ApplicationRecord
-  
-  belongs_to :manager, class_name: 'User', foreign_key: 'manager_id'
+  belongs_to :manager, class_name: 'User', foreign_key: 'manager_id', inverse_of: 'user'
 
   has_many :participants
 
@@ -14,8 +13,8 @@ class Event < ApplicationRecord
 
   validate :end_must_be_after_start
 
-  scope :finished_events, -> { where("end_time < ?", DateTime.now) }
-  scope :unfinished_events, -> { where("end_time > ?", DateTime.now) }
+  scope :finished_events, -> { where('end_time < ?', DateTime.now) }
+  scope :unfinished_events, -> { where('end_time > ?', DateTime.now) }
 
   def full?
     participant_slots <= participants.count
@@ -25,6 +24,10 @@ class Event < ApplicationRecord
     DateTime.now > end_time
   end
 
+  def unfinished?
+    !finished?
+  end
+
   def total_hours
     ((end_time - start_time) / 3600).to_f
   end
@@ -32,8 +35,6 @@ class Event < ApplicationRecord
   private
 
   def end_must_be_after_start
-    if DateTime.new(start_time.to_i) > DateTime.new(end_time.to_i)
-      errors.add(:end_time, "must be after start time")
-    end
+    errors.add(:end_time, 'must be after start time') if DateTime.new(start_time.to_i) > DateTime.new(end_time.to_i)
   end
 end

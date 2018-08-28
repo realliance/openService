@@ -15,8 +15,7 @@ class Admin::SettingsController < ApplicationController
     if user.update_without_password(modify_user_params)
       head :ok
     else
-      byebug
-      render json: {error: user.errors}, status: :bad_request
+      render json: { error: user.errors }, status: :bad_request
     end
   end
 
@@ -27,7 +26,6 @@ class Admin::SettingsController < ApplicationController
 
   def update_settings
     return head :bad_request if params[:club].nil? || params[:navbarStyle].nil? || params[:navbarColor].nil?
-    
     ActiveRecord::Base.transaction do
       Setting['club'] = params[:club]
       Setting['navbarStyle'] = params[:navbarStyle]

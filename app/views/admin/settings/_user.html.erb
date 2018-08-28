@@ -6,7 +6,7 @@
   <td class='user_rank'>
     <%= form_for user, url: admin_modify_user_path(user), remote: true do |f| %>
       <fieldset class="form-group">
-        <%= f.select :rank, RANK_NAMES.each_with_index.map {|name, index| [name,index]}, { selected: user.rank }, { class: 'form-control' } %>
+        <%= f.select :rank, User.ranks.keys.to_a, { selected: user.rank }, { class: 'form-control' } %>
       </fieldset>
     <% end %>
   </td>

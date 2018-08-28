@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_authorization_check
-  authorize_resource :only => [:overview], :class => PagesController
+  authorize_resource only: :overview, class: PagesController
 
   def root
     if user_signed_in?

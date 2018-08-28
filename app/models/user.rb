@@ -4,15 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def active_for_authentication?  
-    super && !deactivated  
-  end  
+  def active_for_authentication?
+    super && !deactivated
+  end
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
   validates :phone_number, presence: true
-  validates :rank, numericality: { only_integer: true }
+  validates :rank, presence: true
 
   validates :email, presence: true, 'valid_email_2/email': true
 
@@ -25,12 +25,14 @@ class User < ApplicationRecord
 
   has_many :announcements
 
+  enum rank: %i[guest member officer advisor superuser]
+
   def full_name
     first_name + ' ' + last_name
   end
 
   def rank_name
-    RANK_NAMES[rank]
+    rank.slice(0,1).capitalize + rank.slice(1..-1)
   end
 
   def total_hours
@@ -41,19 +43,7 @@ class User < ApplicationRecord
     hours
   end
 
-  def member?
-    rank > 0
-  end 
-
   def admin?
-    rank > 1
-  end
-
-  def advisor?
-    rank > 2
-  end
-
-  def superuser?
-    rank == 4
+    officer? || advisor? || superuser?
   end
 end
