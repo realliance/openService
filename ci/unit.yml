@@ -7,5 +7,8 @@ image_resource:
     repository: ruby
     tag: '2.5.1'
 
+inputs:
+- name: openService-develop
+
 run:
-  path: ./scripts/test.sh
+  path: openService-develop/scripts/test.sh
