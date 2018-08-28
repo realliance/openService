@@ -5,7 +5,7 @@ image_resource:
   type: docker-image
   source:
     repository: ruby-node
-    tag: '2-10-slim'
+    tag: 'slim'
 
 inputs:
 - name: openService-develop
