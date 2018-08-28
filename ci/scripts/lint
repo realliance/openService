@@ -9,4 +9,4 @@ gem install bundler
 
 cd openService-develop && bundle install
 
-cd openService-develop && rubocop
+rubocop

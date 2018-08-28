@@ -9,6 +9,6 @@ gem install bundler
 
 cd openService-develop && bundle install
 
-cd openService-develop && rails db:migrate RAILS_ENV=test
+rails db:migrate RAILS_ENV=test
 
-rspec -f d openService-develop/spec/
+rspec -f d

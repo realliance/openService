@@ -11,4 +11,4 @@ inputs:
 - name: openService-develop
 
 run:
-  path: openService-develop/ci/scripts/lint
+  path: openService-develop/ci/scripts/unit
