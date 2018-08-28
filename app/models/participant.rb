@@ -1,5 +1,5 @@
 class Participant < ApplicationRecord
-  belongs_to :event
+  belongs_to :event, touch: true
   belongs_to :user
 
   validates :user, presence: true
