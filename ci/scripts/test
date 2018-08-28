@@ -7,8 +7,8 @@ gem install rails
 
 gem install bundler
 
-bundle install
+cd openService-develop && bundle install
 
-rails db:migrate RAILS_ENV=test
+cd openService-develop && rails db:migrate RAILS_ENV=test
 
-rspec -f d
+rspec -f d openService-develop/spec/
