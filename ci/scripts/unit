@@ -7,7 +7,9 @@ gem install rails
 
 gem install bundler
 
-cd openService-develop && bundle install
+cd openService-develop
+
+bundle install
 
 rails db:migrate RAILS_ENV=test
 
