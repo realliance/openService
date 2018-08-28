@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :manager, class_name: 'User', foreign_key: 'manager_id', inverse_of: 'user'
+  belongs_to :manager, class_name: 'User', foreign_key: 'manager_id'
 
   has_many :participants
 

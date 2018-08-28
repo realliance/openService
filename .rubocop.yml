@@ -40,7 +40,10 @@ Rails/HasManyOrHasOneDependent:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
 
 Rails/LexicallyScopedActionFilter:
   Enabled: false

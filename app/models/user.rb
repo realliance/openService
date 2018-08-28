@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def rank_name
-    rank.slice(0,1).capitalize + rank.slice(1..-1)
+    rank.slice(0, 1).capitalize + rank.slice(1..-1)
   end
 
   def total_hours
