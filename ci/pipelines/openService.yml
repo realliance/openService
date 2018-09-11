@@ -1,11 +1,11 @@
 ---
 resources:
-- name: openService-develop
+- name: develop
   type: git
   source:
     uri: https://github.com/realliance/openService
     branch: develop
-- name: openService-master
+- name: master
   type: git
   source:
     uri: https://github.com/realliance/openService
@@ -14,21 +14,21 @@ resources:
 jobs:
 - name: test
   plan:
-  - get: openService-develop
+  - get: develop
     trigger: true
   - task: unit
-    file: openService-develop/ci/unit.yml
+    file: develop/ci/unit.yml
 - name: lint
   plan:
-  - get: openService-develop
+  - get: develop
     trigger: true
   - task: lint
-    file: openService-develop/ci/lint.yml
+    file: develop/ci/lint.yml
 - name: build
   plan:
-  - get: openService-master
+  - get: master
     trigger: true
   - task: unit
-    file: openService-master/ci/master-unit.yml
+    file: master/ci/master-unit.yml
   - task: publish
-    file: openService-master/ci/publish.yml
+    file: master/ci/publish.yml

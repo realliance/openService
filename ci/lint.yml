@@ -8,7 +8,7 @@ image_resource:
     tag: '2-10'
 
 inputs: 
-- name: openService-develop
+- name: develop
 
 run:
-  path: openService-develop/ci/scripts/lint
+  path: develop/ci/scripts/lint
