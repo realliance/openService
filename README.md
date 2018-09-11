@@ -31,8 +31,11 @@ openService is a dedicated platform for managing community service clubs that ut
 A docker container is available on the project's [quay.io](https://quay.io/repository/realliance/openservice) repository. For deployment, environment variables must be set.
 ### Environment Variables
 `SECRET_KEY_BASE` Secret required for secure cookies and tokens for Users.
+
 `MYSQL_DATABASE` Database name.
+
 `MYSQL_USERNAME` MySQL username for the user that can access the given database.
+
 `MYSQL_PASSWORD` Password for the MYSQL user.
 
 ### Development Environment
