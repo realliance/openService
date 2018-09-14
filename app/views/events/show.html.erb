@@ -1,7 +1,7 @@
 <div class="container">
   <h1>
     <%= @event.title %>
-    <% if can? :update, Participant %>
+    <% if can? :sign_in_sheet, Event %>
       <div class="btn-group">
         <%= link_to 'View Sign In Sheet', event_sign_in_sheet_path(@event), class: 'btn btn-outline-primary' %>
         <% if can? :manage, Event %>
@@ -42,7 +42,7 @@
           <li class="list-group-item">Start: <%= format_datetime @event.start_time %></li>
           <li class="list-group-item">End: <%= format_datetime @event.end_time %></li>
           <li class="list-group-item"><%= get_slots_remaining @event %> Remaining Slots</li>
-          <% if can? :update, Participant %>
+          <% if can? :manage_participants, Event %>
             <li class="list-group-item"><%= link_to 'Manage Participants', event_participants_path(@event), class: 'btn btn-outline-primary btn-block' %></li>
           <% end %>
         </ul>
