@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Manage Participants for <%= Event.find_by(id: params[:event_id]).title %></h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>Hours Gained</th>
+        <% if can? :manage, Participant %>
+          <th></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'participant', collection: @participants or 'No Participants Found' %>
+    </tbody>
+  </table>
+</div>

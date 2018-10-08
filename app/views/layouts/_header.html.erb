@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-<%= Setting.navbarStyle %>" style="background-color: <%= Setting.navbarColor %>">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#"><%= Setting.club %></a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Events', events_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
+      <div class="navbar-nav">
+        
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.full_name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <h6 class="dropdown-header"><%= current_user.rank_name %></h6>
+              <% if current_user.admin? %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Post an Announcement", new_announcement_path, class: 'dropdown-item' %>
+                <%= link_to "Website Dashboard", admin_dashboard_path, class: 'dropdown-item' %>
+              <% end %>
+              <div class="dropdown-divider"></div>
+              <%= button_to "Logout", destroy_user_session_path, method: :delete, remote: true, form_class: 'logout_form', class: 'dropdown-item' %>
+            </div>
+          </li>
+        
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to "Register", new_user_registration_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

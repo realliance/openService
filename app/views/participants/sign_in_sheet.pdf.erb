@@ -1,0 +1,18 @@
+<h1><%= Event.find(params[:event_id]).title %></h1>
+<h2>Sign In Sheet</h2>
+
+<table style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="text-align: center; border: 1px solid black;">Full Name</th>
+      <th style="text-align: center; border: 1px solid black;">Sign In Time</th>
+      <th style="text-align: center; border: 1px solid black;">Sign Out Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @participants or '' %>
+  </tbody>
+</table>
+<% if @participants.last.present? %>
+  <i>Participants as of <%=@participants.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%-m/%-d/%y %l:%M:%S%p') %></i>
+<% end %>

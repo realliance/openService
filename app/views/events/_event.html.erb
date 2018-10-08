@@ -1,0 +1,8 @@
+<tr>
+  <td><%= event.title %></td>
+  <td><%= get_slots_remaining event %></td>
+  <td><%= get_date_string event.start_time %></td>
+  <td><%= get_time_range event.start_time, event.end_time %></td>
+  <td><%= event.location %></td>
+  <td><%= link_to 'View', event_path(event), class: 'btn btn-sm btn-primary' %>
+</tr>

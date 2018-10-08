@@ -1,0 +1,16 @@
+#!/bin/bash
+# vim: set ft=sh
+
+set -e -x
+
+gem install rails
+
+gem install bundler
+
+cd openService
+
+bundle install
+
+rails db:migrate RAILS_ENV=test
+
+rspec -f d

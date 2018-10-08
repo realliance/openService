@@ -1,0 +1,16 @@
+<tr>
+  <td><%= participation.event.title %></td>
+  <td><%= get_date_string participation.event.start_time %></td>
+  <td><%= participation.event.total_hours %></td>
+  <td>
+    <%= participation.hours_gained %>
+    <% if participation.event.finished? %>
+      <% if participation.hours_gained < participation.event.total_hours %>
+        <i class="fa fa-exclamation-circle" data-toggle="tooltip" data-placement="right" title="The manager of the event has marked that you were not there the entire time. If you believe this is a mistake, please contact an officer or advisor."></i>
+      <% end %>
+    <% else %>
+      <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="This event is still active. Your hours for this event will be applied once the event is finished."></i>
+    <% end %>
+  </td>
+  <td><%= link_to 'View Event Page', event_path(participation.event), class: 'btn btn-sm btn-primary' %>
+</tr>

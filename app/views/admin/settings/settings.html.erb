@@ -1,0 +1,24 @@
+<div class="container">
+  <%= render 'menu' %>
+</div>
+<div class="container">
+  <h1>Edit Site Settings</h1>
+  <%= form_tag admin_update_settings_path, remote: true, method: :patch do %>
+    <fieldset class="form-group">
+      <%= label_tag :club, 'Club Name', class: 'form-control-label' %>
+      <%= text_field_tag :club, @settings["club"], class: 'form-control', placeholder: 'Club Name' %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <%= label_tag :navbarStyle, 'Navigation Bar Style', class: 'form-control-label' %>
+      <%= select_tag :navbarStyle, options_for_select(['light', 'dark'], @settings["navbarStyle"]), class: 'form-control' %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <%= label_tag :navbarColor, 'Navigation Bar Style', class: 'form-control-label' %>
+      <%= color_field_tag :navbarColor, @settings["navbarColor"], class: 'form-control' %>
+    </fieldset>
+  
+    <%= submit_tag 'Update', class: 'btn btn-primary', data: { disable_with: 'Update' } %>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Overview of <%= current_user.full_name %></h2>
+  <div class="card-deck">
+    <div class="card text-center">
+      <div class="card-header">
+        Total Event Participations
+      </div>
+      <div class="card-body">
+        <h1 class="display-2"><%= @participations.count %></h1>
+      </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-header">
+        Total Possible Hour Gain
+      </div>
+      <div class="card-body">
+        <h1 class="display-2"><%= @total_possible_hours %></h1>
+      </div>
+    </div>
+    <div class="card text-center">
+      <div class="card-header">
+        Total Hours Gained
+      </div>
+      <div class="card-body">
+        <h1 class="display-2"><%= current_user.total_hours %></h1>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Total Possible Hours</th>
+        <th>Total Hours Gained</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'participation', collection: @participations, cached: true or '' %>
+    </tbody>
+  </table>
+</div>
