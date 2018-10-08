@@ -7,8 +7,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Server databases
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
@@ -86,6 +84,9 @@ group :development, :test do
 end
 
 group :development do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+  
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
