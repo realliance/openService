@@ -36,7 +36,7 @@ gem 'phony_rails', '~> 0.14'
 gem 'cancancan', '~> 2.0'
 
 # Use bootstrap for CSS components
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.1.2'
 # Use bootstra devise views
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 
